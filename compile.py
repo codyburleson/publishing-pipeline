@@ -35,8 +35,8 @@ def find_markdown_files(parent_folder):
     return markdown_files
 
 def compile_with_pandoc(file_list, output_file):
-    cmd = ["pandoc"] + ["--from","gfm"] + file_list + ["--filter","filter_remove_all_horz_rules.py"] + ["--wrap","preserve"] + ["--to","gfm"] + ["-o", output_file]
-    print("Running command:", ' '.join(cmd))
+    cmd = ["pandoc"] + ["--from","markdown"] + file_list + ["--filter","filter_remove_all_horz_rules.py"] + ["--wrap","preserve"] + ["--to","markdown"] + ["-o", output_file] + ["--file-scope"]
+    # print("Running command:", ' '.join(cmd))
     subprocess.run(cmd)
 
 if __name__ == "__main__":
